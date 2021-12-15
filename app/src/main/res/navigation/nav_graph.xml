@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/productPage"
+        android:name="com.muhammedesadcomert.ecommerceapp.ProductPageFragment"
+        android:label="fragment_product_page"
+        tools:layout="@layout/fragment_product_page" />
+    <fragment
+        android:id="@+id/account"
+        android:name="com.muhammedesadcomert.ecommerceapp.Account"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_account_to_accountSettings"
+            app:destination="@id/accountSettings" />
+        <action
+            android:id="@+id/action_account_to_addressesPage"
+            app:destination="@id/addressesPage" />
+        <action
+            android:id="@+id/action_account_to_appSettings"
+            app:destination="@id/appSettings" />
+        <action
+            android:id="@+id/action_account_to_favorites"
+            app:destination="@id/favorites" />
+    </fragment>
+    <fragment
+        android:id="@+id/home"
+        android:name="com.muhammedesadcomert.ecommerceapp.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_productPage"
+            app:destination="@id/productPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/categories"
+        android:name="com.muhammedesadcomert.ecommerceapp.Categories"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" >
+        <action
+            android:id="@+id/action_categories_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/orders"
+        android:name="com.muhammedesadcomert.ecommerceapp.OrdersFragment"
+        android:label="fragment_orders"
+        tools:layout="@layout/fragment_orders" />
+    <fragment
+        android:id="@+id/shopping_cart"
+        android:name="com.muhammedesadcomert.ecommerceapp.ShoppingCart"
+        android:label="fragment_shopping_cart"
+        tools:layout="@layout/fragment_shopping_cart" />
+    <fragment
+        android:id="@+id/accountSettings"
+        android:name="com.muhammedesadcomert.ecommerceapp.AccountSettings"
+        android:label="fragment_account_settings"
+        tools:layout="@layout/fragment_account_settings" />
+    <fragment
+        android:id="@+id/addressesPage"
+        android:name="com.muhammedesadcomert.ecommerceapp.Addresses"
+        android:label="fragment_addresses"
+        tools:layout="@layout/fragment_addresses" />
+    <fragment
+        android:id="@+id/appSettings"
+        android:name="com.muhammedesadcomert.ecommerceapp.AppSettings"
+        android:label="fragment_app_settings"
+        tools:layout="@layout/fragment_app_settings" />
+    <fragment
+        android:id="@+id/favorites"
+        android:name="com.muhammedesadcomert.ecommerceapp.Favorites"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+</navigation>

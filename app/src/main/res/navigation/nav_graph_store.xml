@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_store"
+    app:startDestination="@id/storeProducts">
+
+    <fragment
+        android:id="@+id/storeProducts"
+        android:name="com.muhammedesadcomert.ecommerceapp.StoreProducts"
+        android:label="fragment_store_products"
+        tools:layout="@layout/fragment_store_products" />
+    <fragment
+        android:id="@+id/storeOrders"
+        android:name="com.muhammedesadcomert.ecommerceapp.StoreOrders"
+        android:label="fragment_store_orders"
+        tools:layout="@layout/fragment_store_orders" />
+    <fragment
+        android:id="@+id/storeAccount"
+        android:name="com.muhammedesadcomert.ecommerceapp.StoreAccount"
+        android:label="fragment_store_account"
+        tools:layout="@layout/fragment_store_account" />
+</navigation>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/storeProducts"
+        android:icon="@drawable/ic_storefront"
+        android:title="@string/products" />
+
+    <item
+        android:id="@+id/storeOrders"
+        android:icon="@drawable/ic_orders"
+        android:title="@string/orders" />
+
+    <item
+        android:id="@+id/storeAccount"
+        android:icon="@drawable/ic_account"
+        android:title="@string/account" />
+
+</menu>

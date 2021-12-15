@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name">eCommerceApp</string>
+    <string name="home">Home</string>
+    <string name="categories">Categories</string>
+    <string name="basket">Basket</string>
+    <string name="account">Account</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_screen">Home Screen</string>
+    <string name="categories_screen">Categories Screen</string>
+    <string name="shopping_basket_screen">Shopping Basket Screen</string>
+    <string name="account_screen">Account Screen</string>
+    <string name="product_price">Price</string>
+    <string name="product_title">Product Title</string>
+    <string name="orders">Orders</string>
+    <string name="cart">Cart</string>
+    <string name="add_shopping_cart">Add Shopping Cart</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="app_settings">App Settings</string>
+    <string name="favorites">Favorites</string>
+    <string name="addresses">Addresses</string>
+
+    <!--  Products  -->
+
+    <string name="product1">Telephone</string>
+    <string name="price1">$500</string>
+    <string name="product2">Notebook</string>
+    <string name="price2">$1500</string>
+    <string name="product3">RGB Smart Led</string>
+    <string name="price3">$10</string>
+    <string name="product4">Bicycle</string>
+    <string name="price4">$300</string>
+    <string name="product5">Shoes</string>
+    <string name="price5">$30</string>
+    <string name="product6">Sweatshirt</string>
+    <string name="price6">$60</string>
+    <string name="product7">Perfume</string>
+    <string name="price7">$80</string>
+    <string name="product8">Pillow</string>
+    <string name="price8">$50</string>
+    <string name="product9">Pan</string>
+    <string name="price9">$45</string>
+    <string name="product10">Cat Food</string>
+    <string name="price10">$35</string>
+
+    <!--  Categories  -->
+
+    <string-array name="categories_array">
+        <item>Electronic</item>
+        <item>Home &amp; Life</item>
+        <item>Supermarket</item>
+        <item>Jewelry &amp; Accessories</item>
+        <item>Sport &amp; Outdoor</item>
+        <item>Clothing</item>
+        <item>Cosmetic</item>
+    </string-array>
+
+    <string name="electronic">Electronic</string>
+    <string name="home_and_life">Home &amp; Life</string>
+    <string name="supermarket">Supermarket</string>
+    <string name="jewelry_and_accessories">Jewelry &amp; Accessories</string>
+    <string name="sport_and_outdoor">Sport &amp; Outdoor</string>
+    <string name="clothing">Clothing</string>
+    <string name="cosmetic">Cosmetic</string>
+
+    <string name="category">Category</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="buy">Buy</string>
+    <string name="price">$Price</string>
+    <string name="x_item">(x item(s))</string>
+    <string name="product_image">Product Image</string>
+    <string name="address_title">Address Title</string>
+    <string name="name">Name</string>
+    <string name="location_icon">Location Icon</string>
+    <string name="phone_number">5XXXXXXXXX</string>
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="account_type">Account Type:</string>
+    <string name="account_name">Account Name:</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">SIGN IN OR REGISTER</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="products">Products</string>
+    <string name="store">Store</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_store">Store</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="upload">Upload</string>
+    <string name="search">Search</string>
+    <string name="filter">Filter</string>
+    <string name="enter_the_product_title">Enter the product title</string>
+    <string name="enter_the_product_price">Enter the product price</string>
+    <string name="upload_product">Upload Product</string>
+    <string name="select_an_image">Select an Image</string>
+    <string name="add_product">Add Product</string>
+    <string name="enter_the_product_name">Enter the product name</string>
+    <string name="store_account">Store Account?</string>
+    <string name="store_account_settings">Store Account Settings</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="store_name">Store Name</string>
+
+</resources>
