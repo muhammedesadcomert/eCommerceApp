@@ -4,14 +4,8 @@ An eCommerce app made as a graduation project.
 
 # Screenshots
 
-<img src="images/Home.png" width="20%" height="20%"/>
-<img src="images/Categories.png" width="20%" height="20%"/>
-<img src="images/Cart.png" width="20%" height="20%"/>
-<img src="images/Account.png" width="20%" height="20%"/>
-<img src="images/Addresses.png" width="20%" height="20%"/>
-<img src="images/Store.png" width="20%" height="20%"/>
-<img src="images/Upload Product.png" width="20%" height="20%"/>
-<img src="images/Login Screen.png" width="20%" height="20%"/>
+<img src="images/Home.png" width="20%" height="20%"/> <img src="images/Categories.png" width="20%" height="20%"/> <img src="images/Cart.png" width="20%" height="20%"/> <img src="images/Account.png" width="20%" height="20%"/>
+<img src="images/Addresses.png" width="20%" height="20%"/> <img src="images/Store.png" width="20%" height="20%"/> <img src="images/Upload Product.png" width="20%" height="20%"/> <img src="images/Login Screen.png" width="20%" height="20%"/>
 
 # Getting Started
 
