@@ -22,8 +22,6 @@ import com.muhammedesadcomert.ecommerceapp.MainActivity
 import com.muhammedesadcomert.ecommerceapp.R
 import com.muhammedesadcomert.ecommerceapp.StoreActivity
 import com.muhammedesadcomert.ecommerceapp.databinding.ActivityLoginBinding
-import kotlinx.android.synthetic.main.activity_login.*
-
 
 class LoginActivity : AppCompatActivity() {
 
@@ -177,7 +175,7 @@ class LoginActivity : AppCompatActivity() {
                 } else if (it.get("accountType") == "Customer") {
                     startActivity(Intent(applicationContext, MainActivity::class.java))
                 }
-                loading.visibility = View.GONE
+                binding.loading.visibility = View.GONE
                 finish()
             }.addOnFailureListener {
                 Toast.makeText(applicationContext, it.localizedMessage, Toast.LENGTH_LONG).show()

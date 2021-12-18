@@ -35,7 +35,7 @@ class CartAdapter(private val products: ArrayList<Product>) :
 
         holder.binding.apply {
             productTitle.text = product.name
-            productPrice.text = product.price
+            (product.price + " $").also { productPrice.text = it }
             Picasso.get().load(product.imageURL).into(holder.binding.productImage)
         }
 
