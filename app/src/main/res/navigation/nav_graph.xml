@@ -55,7 +55,11 @@
         android:id="@+id/shopping_cart"
         android:name="com.muhammedesadcomert.ecommerceapp.ShoppingCart"
         android:label="fragment_shopping_cart"
-        tools:layout="@layout/fragment_shopping_cart" />
+        tools:layout="@layout/fragment_shopping_cart" >
+        <action
+            android:id="@+id/action_shopping_cart_to_productPage"
+            app:destination="@id/productPage" />
+    </fragment>
     <fragment
         android:id="@+id/accountSettings"
         android:name="com.muhammedesadcomert.ecommerceapp.AccountSettings"
