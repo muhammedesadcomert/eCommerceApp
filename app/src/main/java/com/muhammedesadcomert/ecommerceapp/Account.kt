@@ -45,8 +45,8 @@ class Account : Fragment(R.layout.fragment_account) {
         binding.signOut.setOnClickListener {
             auth = Firebase.auth
             auth.signOut()
-            startActivity(Intent(activity, LoginActivity::class.java))
             activity?.finish()
+            startActivity(Intent(activity, LoginActivity::class.java))
         }
 
         return binding.root
