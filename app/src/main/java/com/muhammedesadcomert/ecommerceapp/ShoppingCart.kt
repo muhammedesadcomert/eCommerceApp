@@ -33,6 +33,12 @@ class ShoppingCart : Fragment(R.layout.fragment_shopping_cart) {
         db = Firebase.firestore
         auth = Firebase.auth
         cart = ArrayList()
+        val cartAdapter = CartAdapter(cart)
+        binding.recyclerView.apply {
+            adapter = cartAdapter
+            layoutManager = GridLayoutManager(context, 1)
+            setHasFixedSize(true)
+        }
 
         db.collection("Users").document(auth.uid.toString()).collection("Cart")
             .orderBy("date", Query.Direction.DESCENDING)
@@ -52,11 +58,7 @@ class ShoppingCart : Fragment(R.layout.fragment_shopping_cart) {
                             val imageURL = it["imageURL"] as String
                             val product = Product(id, name, price, category, imageURL)
                             cart.add(product)
-                            binding.recyclerView.apply {
-                                adapter = CartAdapter(cart)
-                                layoutManager = GridLayoutManager(context, 1)
-                                setHasFixedSize(true)
-                            }
+                            binding.recyclerView.adapter = cartAdapter
                         }.addOnFailureListener {
                             Toast.makeText(activity, it.localizedMessage, Toast.LENGTH_LONG).show()
                         }

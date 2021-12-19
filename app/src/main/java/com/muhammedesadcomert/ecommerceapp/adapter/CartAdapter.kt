@@ -46,9 +46,8 @@ class CartAdapter(private val products: ArrayList<Product>) :
         }
 
         holder.binding.deleteFromCart.setOnClickListener {
-            db = Firebase.firestore
             auth = Firebase.auth
-
+            db = Firebase.firestore
             db.collection("Users").document(auth.uid.toString()).collection("Cart")
                 .document(product.id).delete()
         }

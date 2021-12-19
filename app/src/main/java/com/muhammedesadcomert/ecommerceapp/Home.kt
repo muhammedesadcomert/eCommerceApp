@@ -30,6 +30,12 @@ class Home : Fragment(R.layout.fragment_home) {
 
         db = Firebase.firestore
         productList = ArrayList()
+        val productAdapter = ProductAdapter(productList)
+        binding.recyclerView.apply {
+            adapter = productAdapter
+            layoutManager = GridLayoutManager(context, 2)
+            setHasFixedSize(true)
+        }
 
         db.collection("Products").orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { value, error ->
@@ -38,7 +44,6 @@ class Home : Fragment(R.layout.fragment_home) {
                 } else if (value != null && !value.isEmpty) {
 
                     val documents = value.documents
-
                     productList.clear()
 
                     for (document in documents) {
@@ -50,16 +55,10 @@ class Home : Fragment(R.layout.fragment_home) {
 
                         val product = Product(id, name, price, category, imageURL)
                         productList.add(product)
-                        binding.recyclerView.adapter = ProductAdapter(productList)
+                        binding.recyclerView.adapter = productAdapter
                     }
                 }
             }
-
-        binding.recyclerView.apply {
-            layoutManager = GridLayoutManager(context, 2)
-            setHasFixedSize(true)
-        }
-
         return binding.root
     }
 }
