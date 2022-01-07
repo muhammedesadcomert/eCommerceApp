@@ -54,4 +54,10 @@ class CartAdapter(private val products: ArrayList<Product>) :
     }
 
     override fun getItemCount() = products.size
+
+    fun updateList(list: ArrayList<Product>) {
+        products.clear()
+        products.addAll(list)
+        notifyDataSetChanged()
+    }
 }

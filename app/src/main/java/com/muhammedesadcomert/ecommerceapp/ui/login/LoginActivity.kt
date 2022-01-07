@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.muhammedesadcomert.ecommerceapp.MainActivity
+import com.muhammedesadcomert.ecommerceapp.R
 import com.muhammedesadcomert.ecommerceapp.StoreActivity
 import com.muhammedesadcomert.ecommerceapp.databinding.ActivityLoginBinding
 
@@ -28,105 +29,59 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = Firebase.auth
+        val signInSignUp = binding.signInSignUp
+        val checkbox = binding.checkbox
+        val username = binding.username
+        val password = binding.password
 
-        binding.signUp!!.setOnClickListener {
-            binding.loading.visibility = View.VISIBLE
-
-            auth.createUserWithEmailAndPassword(
-                binding.username.text.toString(),
-                binding.password.text.toString()
-            ).addOnCompleteListener { task ->
-                // Success
-                if (task.isSuccessful) {
-
-                    val postMap = hashMapOf<String, Any>()
-
-                    if (binding.checkBox!!.isChecked) {
-                        accountType = "Store"
-                        postMap["storeName"] = binding.storeName!!.text.toString()
-                    }
-
-                    val uuid: String = auth.uid.toString()
-
-                    postMap["accountType"] = accountType
-
-                    firestore.collection("Users").document(uuid).set(postMap)
-                        .addOnSuccessListener {
-                            activityStarter()
-                        }.addOnFailureListener {
-                            binding.loading.visibility = View.GONE
-                            Toast.makeText(
-                                applicationContext,
-                                it.localizedMessage,
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                }
-            }   // Fail
-                .addOnFailureListener {
-                    binding.loading.visibility = View.GONE
-                    Toast.makeText(applicationContext, it.localizedMessage, Toast.LENGTH_LONG)
-                        .show()
-                }
+        binding.buttonSignIn.setOnClickListener {
+            signInSignUp.text = getString(R.string.sign_in)
+            checkbox.visibility = View.GONE
+            binding.storeNameInput.visibility = View.GONE
         }
 
-        binding.signIn!!.setOnClickListener {
-            binding.loading.visibility = View.VISIBLE
-
-            auth.signInWithEmailAndPassword(
-                binding.username.text.toString(),
-                binding.password.text.toString()
-            )
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        activityStarter()
-                    }
-                }.addOnFailureListener {
-                    binding.loading.visibility = View.GONE
-                    Toast.makeText(applicationContext, it.localizedMessage, Toast.LENGTH_LONG)
-                        .show()
-                }
+        binding.buttonSignUp.setOnClickListener {
+            signInSignUp.text = getString(R.string.sign_up)
+            checkbox.visibility = View.VISIBLE
         }
 
-        binding.checkBox!!.setOnCheckedChangeListener { _, isSelected ->
+        checkbox.setOnCheckedChangeListener { _, isSelected ->
             if (isSelected) {
-                binding.storeName!!.visibility = View.VISIBLE
+                binding.storeNameInput.visibility = View.VISIBLE
             } else {
-                binding.storeName!!.visibility = View.GONE
+                binding.storeNameInput.visibility = View.GONE
             }
         }
 
-        binding.username.doAfterTextChanged {
-            if (isEmailValid(binding.username.text.toString()) && isPasswordValid(binding.password.text.toString())) {
-                binding.signIn!!.isEnabled = true
-                binding.signUp!!.isEnabled = true
+        signInSignUp.setOnClickListener {
+            if (binding.buttonSignIn.isChecked) {
+                signIn()
             } else {
-                binding.signIn!!.isEnabled = false
-                binding.signUp!!.isEnabled = false
+                signUp()
             }
         }
 
-        binding.password.doAfterTextChanged {
-            if (isEmailValid(binding.username.text.toString()) && isPasswordValid(binding.password.text.toString())) {
-                binding.signIn!!.isEnabled = true
-                binding.signUp!!.isEnabled = true
-            } else {
-                binding.signIn!!.isEnabled = false
-                binding.signUp!!.isEnabled = false
-            }
+        username.doAfterTextChanged {
+            signInSignUp.isEnabled =
+                isEmailValid(username.text.toString()) && isPasswordValid(password.text.toString())
+        }
+
+        password.doAfterTextChanged {
+            signInSignUp.isEnabled =
+                isEmailValid(username.text.toString()) && isPasswordValid(password.text.toString())
         }
     }
 
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        if (auth.currentUser != null) {
+        if (Firebase.auth.currentUser != null) {
             activityStarter()
         }
     }
 
     private fun activityStarter() {
+        auth = Firebase.auth
         firestore.collection("Users").document(auth.uid!!).get()
             .addOnSuccessListener {
                 if (it.get("accountType") == "Store") {
@@ -138,6 +93,66 @@ class LoginActivity : AppCompatActivity() {
                 finish()
             }.addOnFailureListener {
                 Toast.makeText(applicationContext, it.localizedMessage, Toast.LENGTH_LONG).show()
+            }
+    }
+
+    private fun signIn() {
+        binding.loading.visibility = View.VISIBLE
+        auth = Firebase.auth
+
+        auth.signInWithEmailAndPassword(
+            binding.username.text.toString(),
+            binding.password.text.toString()
+        )
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    activityStarter()
+                }
+            }.addOnFailureListener {
+                binding.loading.visibility = View.GONE
+                Toast.makeText(applicationContext, it.localizedMessage, Toast.LENGTH_LONG).show()
+            }
+    }
+
+    private fun signUp() {
+        binding.loading.visibility = View.VISIBLE
+        auth = Firebase.auth
+
+        auth.createUserWithEmailAndPassword(
+            binding.username.text.toString(),
+            binding.password.text.toString()
+        ).addOnCompleteListener { task ->
+            // Success
+            if (task.isSuccessful) {
+
+                val postMap = hashMapOf<String, Any>()
+
+                if (binding.checkbox.isChecked) {
+                    accountType = "Store"
+                    postMap["storeName"] = binding.storeName.text.toString()
+                }
+
+                val uuid: String = auth.uid.toString()
+
+                postMap["accountType"] = accountType
+
+                firestore.collection("Users").document(uuid).set(postMap)
+                    .addOnSuccessListener {
+                        activityStarter()
+                    }.addOnFailureListener {
+                        binding.loading.visibility = View.GONE
+                        Toast.makeText(
+                            applicationContext,
+                            it.localizedMessage,
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+            }
+        }   // Fail
+            .addOnFailureListener {
+                binding.loading.visibility = View.GONE
+                Toast.makeText(applicationContext, it.localizedMessage, Toast.LENGTH_LONG)
+                    .show()
             }
     }
 

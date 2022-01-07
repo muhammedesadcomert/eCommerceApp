@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
@@ -40,7 +39,7 @@ class Home : Fragment(R.layout.fragment_home) {
         db.collection("Products").orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { value, error ->
                 if (error != null) {
-                    Toast.makeText(activity, error.localizedMessage, Toast.LENGTH_LONG).show()
+//                    Toast.makeText(activity, error.localizedMessage, Toast.LENGTH_LONG).show()
                 } else if (value != null && !value.isEmpty) {
 
                     val documents = value.documents

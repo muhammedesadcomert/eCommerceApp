@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.muhammedesadcomert.ecommerceapp.databinding.FragmentAccountBinding
@@ -17,7 +16,6 @@ class Account : Fragment(R.layout.fragment_account) {
 
     private var _binding: FragmentAccountBinding? = null
     private val binding get() = _binding!!
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,10 +41,9 @@ class Account : Fragment(R.layout.fragment_account) {
         }
 
         binding.signOut.setOnClickListener {
-            auth = Firebase.auth
-            auth.signOut()
-            activity?.finish()
+            Firebase.auth.signOut()
             startActivity(Intent(activity, LoginActivity::class.java))
+            activity?.finish()
         }
 
         return binding.root

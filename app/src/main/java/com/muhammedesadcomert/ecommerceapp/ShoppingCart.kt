@@ -23,6 +23,7 @@ class ShoppingCart : Fragment(R.layout.fragment_shopping_cart) {
     private lateinit var cart: ArrayList<Product>
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
+    private lateinit var cartAdapter: CartAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +34,7 @@ class ShoppingCart : Fragment(R.layout.fragment_shopping_cart) {
         db = Firebase.firestore
         auth = Firebase.auth
         cart = ArrayList()
-        val cartAdapter = CartAdapter(cart)
+        cartAdapter = CartAdapter(cart)
         binding.recyclerView.apply {
             adapter = cartAdapter
             layoutManager = GridLayoutManager(context, 1)
@@ -64,6 +65,7 @@ class ShoppingCart : Fragment(R.layout.fragment_shopping_cart) {
                         }
                     }
                 }
+                cartAdapter.updateList(cart)
             }
         return binding.root
     }
