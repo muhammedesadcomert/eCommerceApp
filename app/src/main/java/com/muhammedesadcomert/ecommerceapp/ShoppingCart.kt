@@ -23,20 +23,20 @@ class ShoppingCart : Fragment(R.layout.fragment_shopping_cart) {
     private lateinit var cart: ArrayList<Product>
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
-    private lateinit var cartAdapter: CartAdapter
+    private val cartAdapter by lazy { CartAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentShoppingCartBinding.inflate(layoutInflater)
         db = Firebase.firestore
         auth = Firebase.auth
         cart = ArrayList()
-        cartAdapter = CartAdapter(cart)
         binding.recyclerView.apply {
             adapter = cartAdapter
+            cartAdapter.updateList(cart)
             layoutManager = GridLayoutManager(context, 1)
             setHasFixedSize(true)
         }
@@ -52,20 +52,30 @@ class ShoppingCart : Fragment(R.layout.fragment_shopping_cart) {
 
                     for (document in value.documents) {
                         val id = document.id
-                        db.collection("Products").document(id).get().addOnSuccessListener {
-                            val name = it["name"] as String
-                            val price = it["price"] as String
-                            val category = it["category"] as String
-                            val imageURL = it["imageURL"] as String
-                            val product = Product(id, name, price, category, imageURL)
-                            cart.add(product)
-                            binding.recyclerView.adapter = cartAdapter
-                        }.addOnFailureListener {
-                            Toast.makeText(activity, it.localizedMessage, Toast.LENGTH_LONG).show()
-                        }
+                        db.collection("Products").document(id).get()
+                            .addOnSuccessListener {
+                                val name = it["name"] as String
+                                val price = it["price"] as String
+                                val category = it["category"] as String
+                                val imageURL = it["imageURL"] as String
+                                val product = Product(id, name, price, category, imageURL)
+                                cart.add(product)
+                                cartAdapter.updateList(cart)
+                                binding.recyclerView.adapter = cartAdapter
+                            }.addOnFailureListener {
+                                Toast.makeText(activity, it.localizedMessage, Toast.LENGTH_LONG)
+                                    .show()
+                            }
                     }
+                } else {
+                    cart.clear()
+                    cartAdapter.updateList(cart)
+                    cartAdapter.notifyItemRemoved(0)
                 }
-                cartAdapter.updateList(cart)
+                cartAdapter.deleteFromCart = {
+                    db.collection("Users").document(auth.uid.toString())
+                        .collection("Cart").document(it).delete()
+                }
             }
         return binding.root
     }

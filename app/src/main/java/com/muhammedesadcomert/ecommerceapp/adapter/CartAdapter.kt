@@ -5,21 +5,14 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.muhammedesadcomert.ecommerceapp.R
 import com.muhammedesadcomert.ecommerceapp.databinding.FragmentShoppingCartCardBinding
 import com.muhammedesadcomert.ecommerceapp.model.Product
 import com.squareup.picasso.Picasso
 
-class CartAdapter(private val products: ArrayList<Product>) :
-    RecyclerView.Adapter<CartAdapter.ViewHolder>() {
-
-    private lateinit var db: FirebaseFirestore
-    private lateinit var auth: FirebaseAuth
+class CartAdapter : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
+    private val products: ArrayList<Product> = arrayListOf()
+    var deleteFromCart: (id: String) -> Unit = {}
 
     class ViewHolder(val binding: FragmentShoppingCartCardBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -46,10 +39,7 @@ class CartAdapter(private val products: ArrayList<Product>) :
         }
 
         holder.binding.deleteFromCart.setOnClickListener {
-            auth = Firebase.auth
-            db = Firebase.firestore
-            db.collection("Users").document(auth.uid.toString()).collection("Cart")
-                .document(product.id).delete()
+            deleteFromCart(product.id)
         }
     }
 
@@ -58,6 +48,5 @@ class CartAdapter(private val products: ArrayList<Product>) :
     fun updateList(list: ArrayList<Product>) {
         products.clear()
         products.addAll(list)
-        notifyDataSetChanged()
     }
 }

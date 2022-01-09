@@ -64,7 +64,7 @@ class ProductAdapter(private val products: ArrayList<Product>) :
                             put("date", Timestamp.now())
                         }
                         set(hashMap)
-                        Toast.makeText(View.context, "Added to cart!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(View.context, "Added to cart", Toast.LENGTH_SHORT).show()
                     }
             }
         }
