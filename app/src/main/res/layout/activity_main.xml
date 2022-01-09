@@ -17,12 +17,13 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            app:title="eCommerceApp"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            android:backgroundTint="@color/primaryColor"
             android:popupTheme="@style/Theme.eCommerceApp.PopupOverlay"
-            app:menu="@menu/main_action_bar" />
+            app:menu="@menu/main_action_bar"
+            app:title="eCommerceApp" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

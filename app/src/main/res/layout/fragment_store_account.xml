@@ -19,14 +19,8 @@
         android:padding="8dp"
         android:text="@string/store_account_settings"
         android:textSize="24sp"
-        android:textStyle="bold"
         app:drawableStartCompat="@drawable/ic_account"
         app:drawableTint="@color/primaryColor" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#000000" />
 
     <TextView
         android:id="@+id/app_settings"
@@ -39,14 +33,8 @@
         android:padding="8dp"
         android:text="@string/app_settings"
         android:textSize="24sp"
-        android:textStyle="bold"
         app:drawableStartCompat="@drawable/ic_settings"
         app:drawableTint="@color/primaryColor" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#000000" />
 
     <TextView
         android:id="@+id/sign_out"
@@ -59,7 +47,6 @@
         android:padding="8dp"
         android:text="@string/sign_out"
         android:textSize="24sp"
-        android:textStyle="bold"
         app:drawableStartCompat="@drawable/ic_logout"
         app:drawableTint="@color/primaryColor" />
 

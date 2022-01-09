@@ -13,7 +13,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/shopping_cart"
-        android:textColor="@color/primaryTextColor"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +24,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/x_item"
-        android:textColor="@color/secondaryTextColor"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/shopping_cart_tv"
@@ -49,7 +47,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/price"
-        android:textColor="@color/primaryTextColor"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buy"

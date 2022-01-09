@@ -30,7 +30,6 @@
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            android:textColor="@color/secondaryColor"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/account_name"
-        android:textColor="@color/primaryTextColor"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -8,4 +8,6 @@
   <color name="secondaryDarkColor">#002984</color>
   <color name="primaryTextColor">#000000</color>
   <color name="secondaryTextColor">#ffffff</color>
+  <color name="backgroundTintDark">#424242</color>
+  <color name="buttonDisabled">#BCBCBC</color>
 </resources>

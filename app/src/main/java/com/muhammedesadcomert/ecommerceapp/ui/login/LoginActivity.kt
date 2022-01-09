@@ -62,13 +62,31 @@ class LoginActivity : AppCompatActivity() {
         }
 
         username.doAfterTextChanged {
-            signInSignUp.isEnabled =
-                isEmailValid(username.text.toString()) && isPasswordValid(password.text.toString())
+            if (isEmailValid(username.text.toString()) && isPasswordValid(password.text.toString())) {
+                signInSignUp.apply {
+                    isEnabled = true
+                    background.setTint(getColor(R.color.primaryColor))
+                }
+            } else {
+                signInSignUp.apply {
+                    isEnabled = false
+                    background.setTint(getColor(R.color.buttonDisabled))
+                }
+            }
         }
 
         password.doAfterTextChanged {
-            signInSignUp.isEnabled =
-                isEmailValid(username.text.toString()) && isPasswordValid(password.text.toString())
+            if (isEmailValid(username.text.toString()) && isPasswordValid(password.text.toString())) {
+                signInSignUp.apply {
+                    isEnabled = true
+                    background.setTint(getColor(R.color.primaryColor))
+                }
+            } else {
+                signInSignUp.apply {
+                    isEnabled = false
+                    background.setTint(getColor(R.color.buttonDisabled))
+                }
+            }
         }
     }
 
