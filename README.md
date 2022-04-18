@@ -1,6 +1,6 @@
-# eCommerceApp
+# 🛒 eCommerceApp
 
-An eCommerce app made as a graduation project.
+An Android application made with Kotlin with features such as user login and logout, adding products, and deleting products from the cart.
 
 ## 🛠 Tech Stack
 
