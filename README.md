@@ -1,20 +1,29 @@
-# eCommerceApp
+# 🛒 eCommerceApp
 
-An eCommerce app made as a graduation project.
+An Android application made with Kotlin with features such as user login and logout, adding products, and deleting products from the cart.
 
-# Screenshots
+## 🛠 Tech Stack
+
+- [Kotlin](https://kotlinlang.org/)
+- [View Binding](https://developer.android.com/topic/libraries/view-binding)
+- [Navigation Component](https://developer.android.com/guide/navigation)
+- [Firebase Authentication](https://firebase.google.com/docs/auth)
+- [Cloud Firestore](https://firebase.google.com/docs/firestore)
+- [Picasso](https://square.github.io/picasso/)
+
+## Screenshots
 
 <img src="images/SignIn.png" width="24%" height="24%"/> <img src="images/SignUp.png" width="24%" height="24%"/> <img src="images/Home.png" width="24%" height="24%"/> <img src="images/Categories.png" width="24%" height="24%"/>
 <img src="images/Cart.png" width="24%" height="24%"/> <img src="images/Account.png" width="24%" height="24%"/> <img src="images/Addresses.png" width="24%" height="24%"/> <img src="images/Upload Product.png" width="24%" height="24%"/>
 
-# Getting Started
+## Getting Started
 
 1. Download the project.
 2. Import the project into Android Studio.
 3. Users need to redirect the code to their backend. [Add Firebase to Android project.](https://firebase.google.com/docs/android/setup)
 4. Build and run the project.
 
-# License
+## License
 
 ```
 MIT License
