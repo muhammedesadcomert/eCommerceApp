@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
-import androidx.navigation.Navigation
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
@@ -13,37 +14,40 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.muhammedesadcomert.ecommerceapp.R
 import com.muhammedesadcomert.ecommerceapp.databinding.ProductCardBinding
 import com.muhammedesadcomert.ecommerceapp.model.Product
 import com.squareup.picasso.Picasso
 
-class ProductAdapter(private val products: ArrayList<Product>) :
-    RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(private val onItemClicked: (Product) -> Unit) :
+    ListAdapter<Product, ProductAdapter.ProductViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
 
-    class ProductViewHolder(val binding: ProductCardBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ProductViewHolder(val binding: ProductCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(product: Product) {
+            with(binding) {
+                productTitle.text = product.name
+                (product.price + " $").also { productPrice.text = it }
+                Picasso.get().load(product.imageURL).into(productImage)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context)
-        val productCardBinding = ProductCardBinding.inflate(adapterLayout, parent, false)
-        return ProductViewHolder(productCardBinding)
+        return ProductViewHolder(
+            ProductCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val product = products[position]
+        val product = differ.currentList[position]
 
-        holder.binding.apply {
-            productTitle.text = product.name
-            (product.price + " $").also { productPrice.text = it }
-            Picasso.get().load(product.imageURL).into(productImage)
-        }
+        holder.bind(product)
 
-        holder.binding.productCard.setOnClickListener {
-            val bundle = bundleOf("productId" to product.id)
-            Navigation.findNavController(it).navigate(R.id.action_home_to_productPage, bundle)
+        holder.itemView.setOnClickListener {
+            onItemClicked(product)
         }
 
         holder.binding.addShoppingCart.setOnClickListener { View ->
@@ -81,5 +85,19 @@ class ProductAdapter(private val products: ArrayList<Product>) :
         }
     }
 
-    override fun getItemCount() = products.size
+    val differ = AsyncListDiffer(this, DIFF_CALLBACK)
+
+    override fun getItemCount() = differ.currentList.size
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Product>() {
+            override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }
