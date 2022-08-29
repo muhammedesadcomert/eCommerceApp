@@ -85,7 +85,7 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="sign_in">SIGN IN</string>
+    <string name="sign_in">Sign In</string>
     <string name="sign_up">SIGN UP</string>
     <string name="sign_out">Sign Out</string>
     <string name="products">Products</string>
@@ -115,5 +115,6 @@
     <string name="store_account_settings">Store Account Settings</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="store_name">Store Name</string>
+    <string name="product_page">Product Page</string>
 
 </resources>

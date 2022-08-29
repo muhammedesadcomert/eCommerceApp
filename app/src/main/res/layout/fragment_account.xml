@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="24dp"
     android:orientation="vertical"
-    tools:context=".Account">
+    tools:context=".ui.account.Account">
 
     <TextView
         android:id="@+id/account_settings"
@@ -37,7 +37,7 @@
         app:drawableTint="@color/primaryColor" />
 
     <TextView
-        android:id="@+id/favorites"
+        android:id="@+id/navigation_favorites"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
@@ -47,7 +47,7 @@
         android:padding="8dp"
         android:text="@string/favorites"
         android:textSize="24sp"
-        app:drawableStartCompat="@drawable/ic_favorite"
+        app:drawableStartCompat="@drawable/ic_favorite_border"
         app:drawableTint="@color/primaryColor" />
 
     <TextView

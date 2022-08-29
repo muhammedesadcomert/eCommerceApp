@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountSettings">
+    tools:context=".ui.account.AccountSettings">
 
     <TextView
         android:id="@+id/account_name"

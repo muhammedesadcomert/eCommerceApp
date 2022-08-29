@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.google.firebase.auth.FirebaseAuth
@@ -11,17 +12,21 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.muhammedesadcomert.ecommerceapp.MainActivity
 import com.muhammedesadcomert.ecommerceapp.R
-import com.muhammedesadcomert.ecommerceapp.StoreActivity
 import com.muhammedesadcomert.ecommerceapp.databinding.ActivityLoginBinding
+import com.muhammedesadcomert.ecommerceapp.ui.MainActivity
+import com.muhammedesadcomert.ecommerceapp.ui.store.StoreActivity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.collections.set
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private var firestore: FirebaseFirestore = Firebase.firestore
     private lateinit var auth: FirebaseAuth
     private var accountType = "Customer"
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,21 +120,38 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signIn() {
-        binding.loading.visibility = View.VISIBLE
-        auth = Firebase.auth
+//        binding.loading.visibility = View.VISIBLE
+//        auth = Firebase.auth
+//
+//        auth.signInWithEmailAndPassword(
+//            binding.username.text.toString(),
+//            binding.password.text.toString()
+//        )
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    activityStarter()
+//                }
+//            }.addOnFailureListener {
+//                binding.loading.visibility = View.GONE
+//                Toast.makeText(applicationContext, it.localizedMessage, Toast.LENGTH_LONG).show()
+//            }
 
-        auth.signInWithEmailAndPassword(
+        binding.loading.visibility = View.VISIBLE
+
+        loginViewModel.signIn(
             binding.username.text.toString(),
             binding.password.text.toString()
         )
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    activityStarter()
-                }
-            }.addOnFailureListener {
-                binding.loading.visibility = View.GONE
-                Toast.makeText(applicationContext, it.localizedMessage, Toast.LENGTH_LONG).show()
-            }
+
+
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    activityStarter()
+//                }
+//            }.addOnFailureListener {
+//                binding.loading.visibility = View.GONE
+//                Toast.makeText(applicationContext, it.localizedMessage, Toast.LENGTH_LONG).show()
+//            }
     }
 
     private fun signUp() {

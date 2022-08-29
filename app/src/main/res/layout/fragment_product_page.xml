@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductPageFragment">
+    tools:context=".ui.product.ProductPageFragment">
 
     <ImageView
         android:id="@+id/product_image"
@@ -21,39 +21,39 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/product_title"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/product_image"
         app:layout_constraintStart_toStartOf="@+id/product_image"
-        app:layout_constraintTop_toBottomOf="@id/product_image" />
+        app:layout_constraintTop_toBottomOf="@id/product_image"
+        tools:text="@string/product_title" />
 
     <TextView
         android:id="@+id/store_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/store_name"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/product_image"
-        app:layout_constraintTop_toBottomOf="@+id/product_title" />
+        app:layout_constraintTop_toBottomOf="@+id/product_title"
+        tools:text="@string/store_name" />
 
     <TextView
         android:id="@+id/product_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/product_price"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/product_image"
-        app:layout_constraintTop_toBottomOf="@+id/store_name" />
+        app:layout_constraintTop_toBottomOf="@+id/store_name"
+        tools:text="@string/product_price" />
 
     <Button
         android:id="@+id/add_to_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/primaryColor"
         android:layout_margin="8dp"
+        android:backgroundTint="@color/primaryColor"
         android:text="@string/add_to_cart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

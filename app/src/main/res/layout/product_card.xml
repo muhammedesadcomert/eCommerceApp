@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/product_card"
     android:layout_width="match_parent"
     android:layout_height="300dp"
@@ -9,8 +8,7 @@
     android:clickable="true"
     android:focusable="true"
     app:cardCornerRadius="10dp"
-    app:cardElevation="12dp"
-    tools:context=".ProductCard">
+    app:cardElevation="12dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -48,6 +46,31 @@
             app:layout_constraintBottom_toBottomOf="@+id/add_shopping_cart"
             app:layout_constraintStart_toStartOf="@+id/product_image"
             app:layout_constraintTop_toTopOf="@+id/add_shopping_cart" />
+
+        <ImageButton
+            android:id="@+id/added_to_favorite"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:clickable="true"
+            android:contentDescription="@string/add_shopping_cart"
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/add_shopping_cart"
+            app:srcCompat="@drawable/ic_favorite"
+            app:tint="#FF0000" />
+
+        <ImageButton
+            android:id="@+id/add_favorite"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:clickable="true"
+            android:contentDescription="@string/add_shopping_cart"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/add_shopping_cart"
+            app:srcCompat="@drawable/ic_favorite_border"
+            app:tint="@color/secondaryColor" />
 
         <ImageButton
             android:id="@+id/add_shopping_cart"

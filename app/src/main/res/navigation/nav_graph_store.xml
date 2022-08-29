@@ -7,17 +7,26 @@
 
     <fragment
         android:id="@+id/storeProducts"
-        android:name="com.muhammedesadcomert.ecommerceapp.StoreProducts"
+        android:name="com.muhammedesadcomert.ecommerceapp.ui.store.StoreProducts"
         android:label="fragment_store_products"
-        tools:layout="@layout/fragment_store_products" />
+        tools:layout="@layout/fragment_store_products" >
+        <action
+            android:id="@+id/action_storeProducts_to_uploadFragment"
+            app:destination="@id/uploadFragment" />
+    </fragment>
     <fragment
         android:id="@+id/storeOrders"
-        android:name="com.muhammedesadcomert.ecommerceapp.StoreOrders"
+        android:name="com.muhammedesadcomert.ecommerceapp.ui.store.StoreOrders"
         android:label="fragment_store_orders"
         tools:layout="@layout/fragment_store_orders" />
     <fragment
         android:id="@+id/storeAccount"
-        android:name="com.muhammedesadcomert.ecommerceapp.StoreAccount"
+        android:name="com.muhammedesadcomert.ecommerceapp.ui.store.StoreAccount"
         android:label="fragment_store_account"
         tools:layout="@layout/fragment_store_account" />
+    <fragment
+        android:id="@+id/uploadFragment"
+        android:name="com.muhammedesadcomert.ecommerceapp.ui.upload.UploadFragment"
+        android:label="UploadFragment"
+        tools:layout="@layout/fragment_upload" />
 </navigation>
