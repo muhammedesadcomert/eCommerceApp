@@ -11,14 +11,13 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.muhammedesadcomert.ecommerceapp.R
 import com.muhammedesadcomert.ecommerceapp.databinding.FragmentSignInBinding
-import com.muhammedesadcomert.ecommerceapp.ui.login.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignInFragment : Fragment() {
 
     private lateinit var binding: FragmentSignInBinding
-    private val viewModel: LoginViewModel by viewModels()
+    private val viewModel: SignInViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -15,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.muhammedesadcomert.ecommerceapp.R
 import com.muhammedesadcomert.ecommerceapp.databinding.ActivityLoginBinding
 import com.muhammedesadcomert.ecommerceapp.ui.MainActivity
+import com.muhammedesadcomert.ecommerceapp.ui.login.signin.SignInViewModel
 import com.muhammedesadcomert.ecommerceapp.ui.store.StoreActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.collections.set
@@ -26,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
     private var firestore: FirebaseFirestore = Firebase.firestore
     private lateinit var auth: FirebaseAuth
     private var accountType = "Customer"
-    private val loginViewModel: LoginViewModel by viewModels()
+    private val signInViewModel: SignInViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -138,7 +139,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.loading.visibility = View.VISIBLE
 
-        loginViewModel.signIn(
+        signInViewModel.signIn(
             binding.username.text.toString(),
             binding.password.text.toString()
         )

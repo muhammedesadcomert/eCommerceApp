@@ -1,4 +1,4 @@
-package com.muhammedesadcomert.ecommerceapp.ui.login
+package com.muhammedesadcomert.ecommerceapp.ui.login.signin
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
+class SignInViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
     private var _auth: MutableLiveData<String> = MutableLiveData()
     val auth: LiveData<String> get() = _auth
 
