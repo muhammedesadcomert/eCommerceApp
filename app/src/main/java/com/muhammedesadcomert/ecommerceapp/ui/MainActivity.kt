@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.signInFragment,
+            R.id.signUpFragment,
             R.id.navigation_home,
             R.id.navigation_categories,
             R.id.navigation_cart,

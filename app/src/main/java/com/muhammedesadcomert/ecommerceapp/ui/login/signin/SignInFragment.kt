@@ -44,6 +44,9 @@ class SignInFragment : Fragment() {
                     }
                 }
             }
+            buttonSignUp.setOnClickListener {
+                findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToSignUpFragment())
+            }
         }
     }
 }

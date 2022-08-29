@@ -86,7 +86,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="sign_in">Sign In</string>
-    <string name="sign_up">SIGN UP</string>
+    <string name="sign_up">Sign Up</string>
     <string name="sign_out">Sign Out</string>
     <string name="products">Products</string>
     <string name="store">Store</string>
